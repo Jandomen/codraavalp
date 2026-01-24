@@ -25,7 +25,13 @@ export default function Home() {
           <div className="hidden md:flex gap-8 text-sm font-medium text-muted hover:text-white transition-colors">
             <a href="#metodologia" className="hover:text-gold-secondary transition-colors">Metodología</a>
             <a href="#capacidades" className="hover:text-gold-secondary transition-colors">Capacidades</a>
-            <a href="#contacto" className="px-4 py-2 bg-gold-primary text-white rounded-full hover:bg-gold-secondary transition-colors">Solicitar Diagnóstico</a>
+            <a
+              href="https://wa.me/525848407249?text=Hola,%20quiero%20solicitar%20un%20diagnóstico%20para%20mi%20negocio."
+              target="_blank"
+              className="px-4 py-2 bg-gold-primary text-white rounded-full hover:bg-gold-secondary transition-colors"
+            >
+              Solicitar Diagnóstico
+            </a>
           </div>
         </div>
       </nav>
@@ -34,7 +40,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="max-w-4xl mx-auto px-6 text-center mb-32">
           <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-gold-primary/30 bg-gold-primary/5 text-gold-secondary text-sm font-medium">
-            Agencia de Automatización & Software
+            Agencia Tecnologica Premium
           </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1]">
             No vendemos servicios. <br />
@@ -44,108 +50,249 @@ export default function Home() {
             Ayudamos a empresas a eliminar el caos operativo mediante ecosistemas digitales a medida y automatización inteligente de procesos.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="px-8 py-4 bg-gold-primary text-white rounded-xl font-semibold hover:bg-gold-secondary transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(122,99,60,0.3)]">
+            <a
+              href="https://wa.me/525848407249?text=Hola,%20quiero%20solicitar%20un%20diagnóstico%20para%20mi%20negocio."
+              target="_blank"
+              className="px-8 py-4 bg-gold-primary text-white rounded-xl font-semibold hover:bg-gold-secondary transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(122,99,60,0.3)] text-center"
+            >
               Solicitar Diagnóstico Gratuito
-            </button>
-            <button className="px-8 py-4 bg-white/5 text-white border border-white/10 rounded-xl font-semibold hover:bg-white/10 transition-all">
+            </a>
+            <a
+              href="#metodologia"
+              className="px-8 py-4 bg-white/5 text-white border border-white/10 rounded-xl font-semibold hover:bg-white/10 transition-all text-center"
+            >
               Ver nuestra metodología
-            </button>
+            </a>
           </div>
         </section>
 
         {/* Symptoms Section */}
         <section className="max-w-7xl mx-auto px-6 mb-32">
-          <h2 className="text-3xl font-bold mb-12 text-center">¿Reconoces alguno de estos síntomas?</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="text-center mb-16">
+            <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase">El Problema</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Reconoces alguno de estos síntomas?</h2>
+            <div className="w-16 h-[2px] bg-gold-secondary/50 mx-auto" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4 mb-20 max-w-5xl mx-auto">
             {[
               {
-                title: "Caos Operativo",
-                desc: "Los procesos dependen de personas o excels volátiles, lo que genera errores y cuellos de botella."
+                title: "Caos operativo",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+                desc: "Procesos manuales, información dispersa y cero visibilidad de lo que realmente funciona en tu negocio."
               },
               {
-                title: "Falta de Visibilidad",
-                desc: "No sabes qué está pasando en tiempo real. Los datos están dispersos y las decisiones se toman a ciegas."
+                title: "Falta de automatización",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+                desc: "Tu equipo pierde horas en tareas repetitivas que un sistema inteligente podría resolver en segundos."
               },
               {
-                title: "Techo de Crecimiento",
-                desc: "No puedes escalar porque tu infraestructura actual requiere más personal para procesar más volumen."
+                title: "Ventas sin sistema",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+                  </svg>
+                ),
+                desc: "Dependes de la suerte o del esfuerzo constante. Sin estructura, no hay escalabilidad."
+              },
+              {
+                title: "Dependencia total del dueño",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                ),
+                desc: "Si tú no estás, el negocio se detiene. Eso no es un negocio, es un autoempleo disfrazado."
               }
             ].map((item, i) => (
-              <div key={i} className="p-8 rounded-2xl bg-card border border-white/5 hover:border-gold-primary/30 transition-colors">
-                <div className="w-12 h-12 rounded-lg bg-gold-primary/10 flex items-center justify-center mb-6 text-gold-secondary font-bold">
-                  {i + 1}
+              <div key={i} className="p-10 rounded-xl border border-white/[0.03] bg-[#050505] hover:border-white/10 transition-all group flex flex-col items-start text-left h-full">
+                <div className="text-gold-secondary mb-8 transition-transform duration-500 group-hover:scale-110">
+                  {item.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-                <p className="text-muted leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg md:text-xl font-bold mb-4 text-zinc-100">{item.title}</h3>
+                <p className="text-zinc-500 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
             ))}
+          </div>
+
+          <div className="text-center space-y-2">
+            <p className="text-zinc-500 font-medium">Si esto te suena familiar, no es tu culpa.</p>
+            <p className="text-gold-secondary font-bold">Es que nunca tuviste la tecnología correcta.</p>
           </div>
         </section>
 
         {/* What we build */}
-        <section className="bg-card/50 py-32 border-y border-white/5">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-4xl font-bold mb-8">Lo que construimos</h2>
-                <div className="space-y-8">
-                  {[
-                    {
-                      label: "Ecosistemas Digitales",
-                      desc: "Centralizamos toda tu operación en una sola plataforma personalizada que se adapta a como tú trabajas."
-                    },
-                    {
-                      label: "Automatización 24/7",
-                      desc: "Sustituimos tareas repetitivas por flujos lógicos que trabajan sin descanso ni errores."
-                    },
-                    {
-                      label: "Dashboards en Tiempo Real",
-                      desc: "Toda tu información de negocio visible en un solo lugar para tomar decisiones basadas en datos."
-                    }
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-4">
-                      <div className="mt-1 text-gold-secondary">
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-bold mb-1">{item.label}</h4>
-                        <p className="text-muted">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
+        <section className="bg-background py-32 border-y border-white/5 relative overflow-hidden">
+          {/* Background Image with transparency */}
+          <div className="absolute inset-0 z-0 opacity-5 flex items-center justify-center grayscale pointer-events-none">
+            <Image
+              src="/system-architecture.png"
+              alt="Background Architecture"
+              width={1000}
+              height={1000}
+              className="object-contain"
+            />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="text-center mb-16">
+              <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase">La Solución</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Lo que construimos</h2>
+              <p className="text-xl text-zinc-500 max-w-2xl mx-auto leading-relaxed">
+                Sistemas integrales donde la tecnología trabaja de forma automática, permitiéndote enfocarte en lo estratégico.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-20 max-w-6xl mx-auto">
+              {[
+                {
+                  title: "Ecosistemas digitales completos",
+                  icon: (
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                  ),
+                  desc: "No piezas sueltas. Sistemas donde cada elemento está conectado y trabaja en conjunto para multiplicar resultados."
+                },
+                {
+                  title: "Automatización 24/7",
+                  icon: (
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  ),
+                  desc: "Tu negocio captura leads, atiende clientes, procesa ventas y genera seguimientos mientras duermes."
+                },
+                {
+                  title: "Control y escalabilidad",
+                  icon: (
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  ),
+                  desc: "Dashboards ejecutivos, métricas en tiempo real y la arquitectura necesaria para crecer sin caos."
+                }
+              ].map((item, i) => (
+                <div key={i} className="p-10 rounded-xl border border-white/[0.03] bg-[#050505] hover:border-white/10 transition-all group flex flex-col items-start text-left h-full">
+                  <div className="w-10 h-10 bg-white/[0.02] border border-white/5 flex items-center justify-center rounded mb-8 text-gold-secondary transition-transform duration-500 group-hover:scale-110">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-zinc-100 leading-snug">{item.title}</h3>
+                  <p className="text-zinc-500 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-              </div>
-              <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-gold-primary/10 to-transparent flex items-center justify-center">
-                <Image
-                  src="/system-architecture.png"
-                  alt="System Architecture"
-                  width={300}
-                  height={300}
-                  className="rounded-2xl shadow-2xl opacity-50 grayscale hover:grayscale-0 transition-all duration-700"
-                />
-              </div>
+              ))}
+            </div>
+
+            {/* Strategic Quote Box */}
+            <div className="max-w-4xl mx-auto p-12 rounded-xl bg-[#050505] border border-white/[0.03] text-center">
+              <p className="text-lg font-medium text-gold-secondary italic leading-relaxed">
+                "La tecnología no es un gasto. Es una herramienta estratégica cuando se implementa correctamente."
+              </p>
             </div>
           </div>
         </section>
 
         {/* Capabilities */}
         <section id="capacidades" className="max-w-7xl mx-auto px-6 py-32">
-          <h2 className="text-4xl font-bold mb-16 text-center">Capacidades técnicas</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="text-center mb-16">
+            <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase transition-opacity hover:opacity-80">Servicios</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Capacidades técnicas</h2>
+            <p className="text-zinc-500 text-sm max-w-2xl mx-auto">
+              Cada servicio está diseñado para integrarse en un sistema completo, no como soluciones aisladas.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              "Desarrollo Web Pro",
-              "Apps a Medida",
-              "Integración WhatsApp API",
-              "CRM & ERP Custom",
-              "Sistemas de Auditoría",
-              "Dashboard BI",
-              "Automatización AI",
-              "Sistemas de Inventario"
-            ].map((cap, i) => (
-              <div key={i} className="px-6 py-4 rounded-xl bg-white/5 border border-white/5 text-center font-medium hover:bg-gold-primary/5 hover:border-gold-primary/20 transition-all">
-                {cap}
+              {
+                title: "Desarrollo Web & E-commerce",
+                desc: "Sitios web, landing pages y tiendas online diseñadas para convertir visitantes en clientes.",
+                tags: ["Arquitectura de conversión", "Escalabilidad", "Integración de pagos", "Optimización SEO"],
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                )
+              },
+              {
+                title: "Apps a Medida",
+                desc: "Aplicaciones iOS y Android desarrolladas bajo tu modelo de negocio específico.",
+                tags: ["Marketplace", "Delivery/Servicios", "SaaS por suscripción"],
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                )
+              },
+              {
+                title: "WhatsApp API Oficial",
+                desc: "Automatización avanzada de atención y ventas con la API oficial de Meta.",
+                tags: ["Atención 24/7", "Cotizaciones automáticas", "Flujo de leads"],
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                  </svg>
+                )
+              },
+              {
+                title: "Automatizaciones",
+                desc: "Conexión inteligente de todos los componentes de tu ecosistema digital.",
+                tags: ["Flujo automático", "Seguimientos", "Integraciones"],
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                )
+              },
+              {
+                title: "CRM & Dashboards",
+                desc: "Sistemas de control y seguimiento para tomar decisiones basadas en datos.",
+                tags: ["Gestión de leads", "KPIs en tiempo real", "Embudos de conversión"],
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                )
+              },
+              {
+                title: "Publicidad Estratégica",
+                desc: "Campañas Meta Ads enfocadas en resultados medibles, no en métricas de vanidad.",
+                tags: ["Segmentación precisa", "Optimización constante", "ROI medible"],
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )
+              }
+            ].map((service, i) => (
+              <div key={i} className="group p-8 rounded-xl bg-[#080808] border border-white/5 hover:border-gold-primary/30 transition-all flex flex-col items-start text-left">
+                <div className="text-gold-secondary mb-6 group-hover:scale-110 transition-transform">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
+                <p className="text-zinc-500 text-sm leading-relaxed mb-6">
+                  {service.desc}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {service.tags.map((tag, j) => (
+                    <span key={j} className="px-2 py-1 text-[10px] uppercase tracking-wider font-semibold border border-gold-primary/20 text-gold-secondary rounded bg-gold-primary/5 hover:bg-gold-primary/10 transition-colors">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -157,7 +304,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-4">Metodología de trabajo</h2>
             <p className="text-muted">7 pasos diseñados para la excelencia operativa.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="max-w-4xl mx-auto">
             {[
               { step: "01", title: "Diagnóstico", desc: "Inmersión total en tus procesos para entender el lodo operativo." },
               { step: "02", title: "Arquitectura", desc: "Diseño del ecosistema digital y flujo de datos óptimo." },
@@ -167,133 +314,203 @@ export default function Home() {
               { step: "06", title: "Evaluación", desc: "Medición de KPIs y refinamiento de procesos." },
               { step: "07", title: "Soporte", desc: "Evolución continua y mantenimiento proactivo." }
             ].map((m, i) => (
-              <div key={i} className="group p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-gold-primary/10 hover:border-gold-primary/30 transition-all duration-300">
-                <div className="text-4xl font-black text-white/10 group-hover:text-gold-primary/30 transition-colors mb-4">
+              <div key={i} className="group flex items-start gap-6 md:gap-12 py-8 border-b border-white/10 last:border-0 hover:bg-white/[0.02] transition-colors rounded-xl px-4">
+                <div className="text-5xl md:text-6xl font-black text-white/10 group-hover:text-gold-primary/50 transition-colors">
                   {m.step}
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-white">{m.title}</h3>
-                <p className="text-sm text-muted group-hover:text-zinc-300 transition-colors">{m.desc}</p>
+                <div className="pt-2 md:pt-4">
+                  <h3 className="text-xl md:text-2xl font-bold mb-2 text-white group-hover:text-gold-secondary transition-colors">{m.title}</h3>
+                  <p className="text-muted leading-relaxed max-w-xl group-hover:text-zinc-300 transition-colors">{m.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Qualification Section */}
-        <section className="max-w-7xl mx-auto px-6 py-32 bg-card rounded-[3rem] border border-white/5">
+        {/* Transparency Section */}
+        <section className="max-w-7xl mx-auto px-6 py-32">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Con quién trabajamos</h2>
-            <p className="text-muted">No somos para todos. Operamos mejor con perfiles específicos.</p>
+            <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase transition-opacity hover:opacity-80">Transparencia</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Con quién trabajamos</h2>
+            <p className="text-zinc-500 text-sm max-w-2xl mx-auto leading-relaxed">
+              No buscamos trabajar con todos. Buscamos clientes con los que podamos construir algo extraordinario.
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Ideal Client */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-emerald-500 mb-8 flex items-center gap-2">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                Perfil Ideal
-              </h3>
-              {[
-                "Dueños de negocio con visión de largo plazo.",
-                "Empresas que facturan +$50k USD anuales.",
-                "Personas pragmáticas que valoran la eficiencia.",
-                "Equipos listos para digitalizar su operación."
-              ].map((text, i) => (
-                <div key={i} className="flex gap-4 p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
-                  <span className="text-emerald-500 font-bold">✓</span>
-                  <p className="text-zinc-300">{text}</p>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Working with */}
+            <div className="p-10 rounded-2xl border border-white/5 bg-[#080808]/50 backdrop-blur-sm transition-all hover:bg-[#0a0a0a]">
+              <div className="flex items-center gap-4 mb-10">
+                <div className="w-10 h-10 bg-emerald-500/10 rounded flex items-center justify-center text-emerald-500 border border-emerald-500/20">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
-              ))}
+                <h3 className="text-xl font-bold text-white">Trabajamos con</h3>
+              </div>
+              <ul className="space-y-6">
+                {[
+                  "Empresas que buscan crecimiento estructurado",
+                  "Emprendedores con visión a largo plazo",
+                  "Negocios dispuestos a invertir en tecnología",
+                  "Equipos que valoran procesos y comunicación clara",
+                  "Proyectos con presupuesto definido y realista"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4 group">
+                    <span className="text-[#3a3a3a] group-hover:text-emerald-500 transition-colors mt-1">✓</span>
+                    <p className="text-zinc-400 text-sm group-hover:text-zinc-200 transition-colors">{item}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Not for us */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-rose-500 mb-8 flex items-center gap-2">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" /></svg>
-                No es para ti si...
-              </h3>
-              {[
-                "Buscas una solución mágica de la noche a la mañana.",
-                "No tienes presupuesto asignado para infraestructura.",
-                "No valoras el impacto de la tecnología en tu margen.",
-                "Prefieres seguir haciendo las cosas de forma manual."
-              ].map((text, i) => (
-                <div key={i} className="flex gap-4 p-4 rounded-xl bg-rose-500/5 border border-rose-500/10">
-                  <span className="text-rose-500 font-bold">✕</span>
-                  <p className="text-zinc-300">{text}</p>
+            {/* Not working with */}
+            <div className="p-10 rounded-2xl border border-white/5 bg-[#080808]/50 backdrop-blur-sm transition-all hover:bg-[#0a0a0a]">
+              <div className="flex items-center gap-4 mb-10">
+                <div className="w-10 h-10 bg-rose-500/10 rounded flex items-center justify-center text-rose-500 border border-rose-500/20">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </div>
-              ))}
+                <h3 className="text-xl font-bold text-white">No trabajamos con</h3>
+              </div>
+              <ul className="space-y-6">
+                {[
+                  "Quienes buscan 'algo rápido y barato'",
+                  "Negocios sin claridad en sus objetivos",
+                  "Clientes que esperan resultados mágicos",
+                  "Proyectos sin presupuesto para tecnología seria",
+                  "Quienes no respetan procesos profesionales"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4 group">
+                    <span className="text-[#3a3a3a] group-hover:text-rose-500 transition-colors mt-1">✕</span>
+                    <p className="text-zinc-400 text-sm group-hover:text-zinc-200 transition-colors">{item}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
+          </div>
+
+          <div className="text-center mb-32">
+            <p className="text-zinc-600 text-[10px] md:text-xs">
+              Esta claridad nos permite entregar resultados excepcionales a quienes realmente están listos para crecer.
+            </p>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section id="contacto" className="max-w-5xl mx-auto px-6 py-32">
-          <div className="relative p-12 md:p-20 rounded-[3rem] bg-gradient-to-br from-gold-primary/20 via-card to-background border border-gold-primary/30 text-center overflow-hidden">
-            <div className="absolute inset-0 bg-[url('/patterns/carbon-fibre.png')] opacity-5" />
-            <h2 className="relative text-4xl md:text-5xl font-bold mb-8 italic">¿Listo para dejar de vender servicios y empezar a construir sistemas?</h2>
-            <p className="relative text-xl text-muted mb-12 max-w-2xl mx-auto">
-              Solo aceptamos 2 proyectos nuevos por mes para garantizar la máxima calidad y atención.
+        {/* Final CTA Section */}
+        <section id="contacto" className="max-w-4xl mx-auto px-6 py-40 border-t border-white/5">
+          <div className="text-center">
+            <span className="text-gold-secondary font-bold tracking-widest text-xs mb-6 block uppercase transition-opacity hover:opacity-80">Siguiente Paso</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white max-w-3xl mx-auto leading-tight">
+              ¿Listo para construir un negocio que funcione sin ti?
+            </h2>
+            <p className="text-zinc-500 text-sm max-w-xl mx-auto mb-10 leading-relaxed">
+              Solicita un diagnóstico gratuito. Analizaremos tu situación actual y te diremos con honestidad si podemos ayudarte.
             </p>
-            <button className="relative px-12 py-5 bg-gold-primary text-white text-lg rounded-2xl font-bold hover:bg-gold-secondary transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(122,99,60,0.4)]">
-              Aplicar para Evaluación
-            </button>
+
+            <a
+              href="https://wa.me/525848407249?text=Hola,%20vengo%20de%20la%20página%20web%20y%20quiero%20aplicar%20para%20una%20evaluación."
+              target="_blank"
+              className="px-10 py-4 bg-gold-primary hover:bg-gold-secondary text-white font-bold rounded-xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 mx-auto mb-10 w-full md:w-auto"
+            >
+              Aplicar para evaluación
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+
+            <p className="text-zinc-700 text-[10px] uppercase tracking-wider">
+              No vendemos a todos. Evaluamos cada proyecto para asegurar que podemos entregar resultados excepcionales.
+            </p>
           </div>
         </section>
       </main>
 
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/521234567890"
+        href="https://wa.me/525848407249"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gold-primary rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(122,99,60,0.4)] hover:scale-110 transition-transform group"
       >
-        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-4.752 8.995c-1.991 0-3.942-.534-5.646-1.543l-.404-.24-4.19 1.098 1.118-4.085-.263-.418c-1.103-1.755-1.685-3.805-1.685-5.918 0-6.177 5.024-11.2 11.201-11.2 2.992 0 5.805 1.166 7.92 3.282 2.115 2.116 3.282 4.929 3.282 7.918 0 6.179-5.025 11.201-11.202 11.201m11.202-22.402c-2.992-2.99-6.969-4.639-11.201-4.639-8.729 0-15.833 7.104-15.833 15.833 0 2.789.729 5.512 2.114 7.925l-2.246 8.216 8.406-2.205c2.329 1.272 4.948 1.943 7.565 1.943l.007 0c8.728 0 15.833-7.104 15.833-15.833 0-4.226-1.649-8.203-4.646-11.201z" />
+        <svg
+          className="w-8 h-8 text-white group-hover:scale-110 transition-transform"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
         </svg>
       </a>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-20 bg-card/30">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
-          <div className="col-span-2">
-            <div className="flex items-center gap-2 mb-6">
+      <footer className="border-t border-white/5 py-32 bg-background">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-20">
+          <div className="space-y-8">
+            <div className="flex items-center gap-3">
               <Image
                 src="/logo.jpg"
                 alt="Codrava Logo"
-                width={32}
-                height={32}
-                className="rounded ring-1 ring-gold-primary/50"
+                width={36}
+                height={36}
+                className="rounded-lg shadow-[0_0_15px_rgba(122,99,60,0.2)]"
               />
-              <span className="text-lg font-bold tracking-tighter text-white">CODRAVA</span>
             </div>
-            <p className="text-muted max-w-sm mb-6">
-              Transformamos la complejidad operativa en simplicidad técnica. Sistemas que trabajan para ti, no al revés.
+            <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
+              Agencia tecnológica especializada en ecosistemas digitales, automatización y software a medida.
             </p>
           </div>
-          <div>
-            <h4 className="font-bold mb-6">Servicios</h4>
-            <ul className="space-y-4 text-muted">
-              <li><a href="#" className="hover:text-gold-secondary transition-colors">Automatización</a></li>
-              <li><a href="#" className="hover:text-gold-secondary transition-colors">Software a Medida</a></li>
-              <li><a href="#" className="hover:text-gold-secondary transition-colors">Consultoría</a></li>
+
+          <div className="space-y-8">
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest">Servicios</h4>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-zinc-500 hover:text-gold-secondary text-sm transition-colors">Desarrollo Web & E-commerce</a></li>
+              <li><a href="#" className="text-zinc-500 hover:text-gold-secondary text-sm transition-colors">Apps a Medida</a></li>
+              <li><a href="#" className="text-zinc-500 hover:text-gold-secondary text-sm transition-colors">WhatsApp API Oficial</a></li>
+              <li><a href="#" className="text-zinc-500 hover:text-gold-secondary text-sm transition-colors">Automatizaciones</a></li>
+              <li><a href="#" className="text-zinc-500 hover:text-gold-secondary text-sm transition-colors">CRM & Dashboards</a></li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-bold mb-6">Contacto</h4>
-            <ul className="space-y-4 text-muted">
-              <li>info@codrava.com</li>
-              <li>+52 (123) 456 7890</li>
-              <li className="flex gap-4 mt-6">
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold-primary/20 transition-colors">
-                  <span className="sr-only">LinkedIn</span>
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-                </a>
+
+          <div className="space-y-8">
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest">Contacto</h4>
+            <ul className="space-y-4">
+              <li className="flex items-center gap-3 text-zinc-500 text-sm">
+                <svg className="w-4 h-4 text-gold-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +52 58 4840 7249
+              </li>
+              <li className="flex items-center gap-3 text-zinc-500 text-sm">
+                <svg className="w-4 h-4 text-gold-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                codravalp@gmail.com
+              </li>
+              <li className="flex items-center gap-3 text-zinc-500 text-sm">
+                <svg className="w-4 h-4 text-gold-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Latinoamérica
               </li>
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 mt-20 pt-8 border-t border-white/5 text-center text-sm text-muted">
-          © {new Date().getFullYear()} Codrava Ecosystems. Todos los derechos reservados.
+
+        <div className="max-w-7xl mx-auto px-6 mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-zinc-600 uppercase tracking-widest">
+          <div>© 2026 CODRAVA LP. Todos los derechos reservados.</div>
+          <div className="flex gap-6">
+            <span>Tecnología</span>
+            <span>·</span>
+            <span>Automatización</span>
+            <span>·</span>
+            <span>Resultados Reales</span>
+          </div>
         </div>
       </footer>
     </div>
