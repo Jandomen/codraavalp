@@ -1,8 +1,64 @@
+"use client";
 import Image from "next/image";
+import { motion, Variants } from "framer-motion";
+import { useState } from "react";
+
+const fadeIn: Variants = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" }
+  }
+};
+
+const staggerContainer: Variants = {
+  initial: {},
+  whileInView: {
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const staggerItem: Variants = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    nombre: "",
+    empresa: "",
+    correo: "",
+    presupuesto: "Selecciona una opción",
+    objetivo: "",
+    contexto: ""
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const message = `*Nueva Aplicación CODRAVA LP*%0A%0A` +
+      `*Nombre:* ${formData.nombre}%0A` +
+      `*Empresa:* ${formData.empresa}%0A` +
+      `*Correo:* ${formData.correo}%0A` +
+      `*Presupuesto:* ${formData.presupuesto}%0A` +
+      `*Objetivo:* ${formData.objetivo}%0A` +
+      `*Contexto:* ${formData.contexto}`;
+
+    const whatsappUrl = `https://wa.me/525648407249?text=${message}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
-    <div className="relative min-h-screen Selection:bg-gold-primary/30">
+    <div className="relative min-h-screen selection:bg-gold-primary/30">
       {/* Background Glows */}
       <div className="glow-bg">
         <div className="glow-circle gold-glow w-[500px] h-[500px] -top-20 -left-20" />
@@ -36,11 +92,16 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="pt-32 pb-20">
+      <main className="pt-32 pb-20 overflow-x-hidden">
         {/* Hero Section */}
-        <section className="max-w-4xl mx-auto px-6 text-center mb-32">
+        <motion.section
+          className="max-w-4xl mx-auto px-6 text-center mb-32"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
           <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-gold-primary/30 bg-gold-primary/5 text-gold-secondary text-sm font-medium">
-            Agencia Tecnologica Premium
+            Agencia Tecnológica Premium
           </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1]">
             No vendemos servicios. <br />
@@ -49,7 +110,7 @@ export default function Home() {
           <p className="text-xl text-muted max-w-2xl mx-auto mb-12 leading-relaxed">
             Ayudamos a empresas a eliminar el caos operativo mediante ecosistemas digitales a medida y automatización inteligente de procesos.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-300">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="https://wa.me/525648407249?text=Hola,%20quiero%20solicitar%20un%20diagnóstico%20para%20mi%20negocio."
               target="_blank"
@@ -58,17 +119,27 @@ export default function Home() {
               Solicitar Diagnóstico Gratuito
             </a>
           </div>
-        </section>
+        </motion.section>
 
         {/* Symptoms Section */}
-        <section className="max-w-7xl mx-auto px-6 mb-32">
+        <motion.section
+          className="max-w-7xl mx-auto px-6 mb-32"
+          {...fadeIn}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <div className="text-center mb-16">
             <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase">El Problema</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Reconoces alguno de estos síntomas?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">¿Reconoces alguno de estos síntomas?</h2>
             <div className="w-16 h-[2px] bg-gold-secondary/50 mx-auto" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4 mb-20 max-w-5xl mx-auto">
+          <motion.div
+            className="grid md:grid-cols-2 gap-4 mb-20 max-w-5xl mx-auto"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {[
               {
                 title: "Caos operativo",
@@ -107,7 +178,12 @@ export default function Home() {
                 desc: "Si tú no estás, el negocio se detiene. Eso no es un negocio, es un autoempleo disfrazado."
               }
             ].map((item, i) => (
-              <div key={i} className="p-10 rounded-xl border border-white/[0.03] bg-[#050505] hover:border-white/10 transition-all group flex flex-col items-start text-left h-full">
+              <motion.div
+                key={i}
+                variants={staggerItem}
+                whileHover={{ y: -5, scale: 1.01 }}
+                className="p-10 rounded-xl border border-white/[0.03] bg-[#050505] hover:border-gold-primary/30 transition-all group flex flex-col items-start text-left h-full pointer-events-auto"
+              >
                 <div className="text-gold-secondary mb-8 transition-transform duration-500 group-hover:scale-110">
                   {item.icon}
                 </div>
@@ -115,19 +191,22 @@ export default function Home() {
                 <p className="text-zinc-500 text-sm leading-relaxed">
                   {item.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <div className="text-center space-y-2">
             <p className="text-zinc-500 font-medium">Si esto te suena familiar, no es tu culpa.</p>
             <p className="text-gold-secondary font-bold">Es que nunca tuviste la tecnología correcta.</p>
           </div>
-        </section>
+        </motion.section>
 
         {/* What we build */}
-        <section className="bg-background py-32 border-y border-white/5 relative overflow-hidden">
-          {/* Background Image with transparency */}
+        <motion.section
+          className="bg-background py-32 border-y border-white/5 relative overflow-hidden"
+          {...fadeIn}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <div className="absolute inset-0 z-0 opacity-5 flex items-center justify-center grayscale pointer-events-none">
             <Image
               src="/system-architecture.png"
@@ -147,7 +226,13 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mb-20 max-w-6xl mx-auto">
+            <motion.div
+              className="grid md:grid-cols-3 gap-6 mb-20 max-w-6xl mx-auto"
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+            >
               {[
                 {
                   title: "Ecosistemas digitales completos",
@@ -177,29 +262,38 @@ export default function Home() {
                   desc: "Dashboards ejecutivos, métricas en tiempo real y la arquitectura necesaria para crecer sin caos."
                 }
               ].map((item, i) => (
-                <div key={i} className="p-10 rounded-xl border border-white/[0.03] bg-[#050505] hover:border-white/10 transition-all group flex flex-col items-start text-left h-full">
-                  <div className="w-10 h-10 bg-white/[0.02] border border-white/5 flex items-center justify-center rounded mb-8 text-gold-secondary transition-transform duration-500 group-hover:scale-110">
+                <motion.div
+                  key={i}
+                  variants={staggerItem}
+                  whileHover={{ y: -5, scale: 1.01 }}
+                  className="p-10 rounded-xl border border-white/[0.03] bg-[#050505] hover:border-gold-primary/30 transition-all group flex flex-col items-start text-left h-full"
+                >
+                  <div className="w-10 h-10 bg-white/[0.02] border border-white/5 flex items-center justify-center rounded mb-8 text-gold-secondary group-hover:scale-110 transition-transform">
                     {item.icon}
                   </div>
                   <h3 className="text-xl font-bold mb-4 text-zinc-100 leading-snug">{item.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">
                     {item.desc}
                   </p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            {/* Strategic Quote Box */}
             <div className="max-w-4xl mx-auto p-12 rounded-xl bg-[#050505] border border-white/[0.03] text-center">
               <p className="text-lg font-medium text-gold-secondary italic leading-relaxed">
                 "La tecnología no es un gasto. Es una herramienta estratégica cuando se implementa correctamente."
               </p>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Capabilities */}
-        <section id="capacidades" className="max-w-7xl mx-auto px-6 py-32">
+        <motion.section
+          id="capacidades"
+          className="max-w-7xl mx-auto px-6 py-32"
+          {...fadeIn}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <div className="text-center mb-16">
             <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase transition-opacity hover:opacity-80">Servicios</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Capacidades técnicas</h2>
@@ -208,7 +302,13 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+          >
             {[
               {
                 title: "Desarrollo Web & E-commerce",
@@ -272,34 +372,50 @@ export default function Home() {
                 )
               }
             ].map((service, i) => (
-              <div key={i} className="group p-8 rounded-xl bg-[#080808] border border-white/5 hover:border-gold-primary/30 transition-all flex flex-col items-start text-left">
+              <motion.div
+                key={i}
+                variants={staggerItem}
+                whileHover={{ y: -5, scale: 1.01 }}
+                className="group p-8 rounded-xl bg-[#080808] border border-white/5 hover:border-gold-primary/30 transition-all flex flex-col items-start text-left"
+              >
                 <div className="text-gold-secondary mb-6 group-hover:scale-110 transition-transform">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
+                <h3 className="text-xl font-bold mb-3 text-white group-hover:text-gold-secondary transition-colors">{service.title}</h3>
                 <p className="text-zinc-500 text-sm leading-relaxed mb-6">
                   {service.desc}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {service.tags.map((tag, j) => (
-                    <span key={j} className="px-2 py-1 text-[10px] uppercase tracking-wider font-semibold border border-gold-primary/20 text-gold-secondary rounded bg-gold-primary/5 hover:bg-gold-primary/10 transition-colors">
+                    <span key={j} className="px-2 py-1 text-[10px] uppercase tracking-wider font-semibold border border-gold-primary/20 text-gold-secondary rounded bg-gold-primary/5">
                       {tag}
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
         {/* Methodology */}
-        <section id="metodologia" className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5">
+        <motion.section
+          id="metodologia"
+          className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5"
+          {...fadeIn}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <div className="text-center mb-16">
             <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase transition-opacity hover:opacity-80">Proceso</span>
             <h2 className="text-4xl font-bold mb-4">Metodología de trabajo</h2>
             <p className="text-muted">7 pasos diseñados para la excelencia operativa.</p>
           </div>
-          <div className="max-w-4xl mx-auto">
+          <motion.div
+            className="max-w-4xl mx-auto"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+          >
             {[
               { step: "01", title: "Diagnóstico", desc: "Inmersión total en tus procesos para entender el lodo operativo." },
               { step: "02", title: "Arquitectura", desc: "Diseño del ecosistema digital y flujo de datos óptimo." },
@@ -309,7 +425,12 @@ export default function Home() {
               { step: "06", title: "Evaluación", desc: "Medición de KPIs y refinamiento de procesos." },
               { step: "07", title: "Soporte", desc: "Evolución continua y mantenimiento proactivo." }
             ].map((m, i) => (
-              <div key={i} className="group flex items-start gap-6 md:gap-12 py-8 border-b border-white/10 last:border-0 hover:bg-white/[0.02] transition-colors rounded-xl px-4">
+              <motion.div
+                key={i}
+                variants={staggerItem}
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.02)" }}
+                className="group flex items-start gap-6 md:gap-12 py-8 border-b border-white/10 last:border-0 transition-colors rounded-xl px-4"
+              >
                 <div className="text-5xl md:text-6xl font-black text-white/10 group-hover:text-gold-primary/50 transition-colors">
                   {m.step}
                 </div>
@@ -317,13 +438,17 @@ export default function Home() {
                   <h3 className="text-xl md:text-2xl font-bold mb-2 text-white group-hover:text-gold-secondary transition-colors">{m.title}</h3>
                   <p className="text-muted leading-relaxed max-w-xl group-hover:text-zinc-300 transition-colors">{m.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
         {/* Transparency Section */}
-        <section className="max-w-7xl mx-auto px-6 py-32">
+        <motion.section
+          className="max-w-7xl mx-auto px-6 py-32"
+          {...fadeIn}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <div className="text-center mb-16">
             <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase transition-opacity hover:opacity-80">Transparencia</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Con quién trabajamos</h2>
@@ -334,7 +459,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Working with */}
-            <div className="p-10 rounded-2xl border border-white/5 bg-[#080808]/50 backdrop-blur-sm transition-all hover:bg-[#0a0a0a]">
+            <motion.div
+              whileHover={{ scale: 1.01 }}
+              className="p-10 rounded-2xl border border-white/5 bg-[#080808]/50 backdrop-blur-sm transition-all hover:bg-[#0a0a0a]"
+            >
               <div className="flex items-center gap-4 mb-10">
                 <div className="w-10 h-10 bg-emerald-500/10 rounded flex items-center justify-center text-emerald-500 border border-emerald-500/20">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -357,10 +485,13 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Not working with */}
-            <div className="p-10 rounded-2xl border border-white/5 bg-[#080808]/50 backdrop-blur-sm transition-all hover:bg-[#0a0a0a]">
+            <motion.div
+              whileHover={{ scale: 1.01 }}
+              className="p-10 rounded-2xl border border-white/5 bg-[#080808]/50 backdrop-blur-sm transition-all hover:bg-[#0a0a0a]"
+            >
               <div className="flex items-center gap-4 mb-10">
                 <div className="w-10 h-10 bg-rose-500/10 rounded flex items-center justify-center text-rose-500 border border-rose-500/20">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -383,7 +514,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
 
           <div className="text-center mb-32">
@@ -391,13 +522,18 @@ export default function Home() {
               Esta claridad nos permite entregar resultados excepcionales a quienes realmente están listos para crecer.
             </p>
           </div>
-        </section>
+        </motion.section>
 
         {/* Final CTA / Application Section - RESTORED */}
-        <section id="aplicar" className="max-w-4xl mx-auto px-6 py-32 border-t border-white/5">
+        <motion.section
+          id="aplicar"
+          className="max-w-4xl mx-auto px-6 py-32 border-t border-white/5"
+          {...fadeIn}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <div className="text-center mb-16">
             <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase">FINAL</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">Aplicar para trabajar con CODRAVA LP</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">Aplicar para escalar con CODRAVA LP</h2>
             <div className="space-y-4 max-w-2xl mx-auto">
               <p className="text-zinc-500 text-sm leading-relaxed">
                 Si tu negocio necesita un sistema serio, automatizado y escalable, este es el siguiente paso.
@@ -410,13 +546,17 @@ export default function Home() {
           </div>
 
           <div className="p-8 md:p-12 rounded-3xl border border-white/[0.03] bg-[#080808]">
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Nombre</label>
                   <input
                     type="text"
+                    name="nombre"
+                    value={formData.nombre}
+                    onChange={handleChange}
                     placeholder="Tu nombre"
+                    required
                     className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors"
                   />
                 </div>
@@ -424,7 +564,11 @@ export default function Home() {
                   <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Empresa</label>
                   <input
                     type="text"
+                    name="empresa"
+                    value={formData.empresa}
+                    onChange={handleChange}
                     placeholder="Nombre del negocio"
+                    required
                     className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors"
                   />
                 </div>
@@ -435,17 +579,30 @@ export default function Home() {
                   <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Correo</label>
                   <input
                     type="email"
+                    name="correo"
+                    value={formData.correo}
+                    onChange={handleChange}
                     placeholder="tu@correo.com"
+                    required
                     className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Presupuesto estimado</label>
-                  <select className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors appearance-none">
-                    <option>Selecciona una opción</option>
-                    <option>$1k - $3k USD</option>
-                    <option>$3k - $10k USD</option>
-                    <option>$10k+ USD</option>
+                  <select
+                    name="presupuesto"
+                    value={formData.presupuesto}
+                    onChange={handleChange}
+                    className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors appearance-none scrollbar-hide"
+                  >
+                    <option disabled>Selecciona una opción</option>
+                    <option>MXN $250k+</option>
+                    <option>MXN $120k – $250k</option>
+                    <option>MXN $60k – $120k</option>
+                    <option>MXN $30k – $60k</option>
+                    <option>MXN $20k – $30k</option>
+                    <option>MXN $15k – $20k</option>
+                    <option>MXN $10k – $15k</option>
                   </select>
                 </div>
               </div>
@@ -454,7 +611,11 @@ export default function Home() {
                 <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Objetivo principal (1-2 lineas)</label>
                 <input
                   type="text"
+                  name="objetivo"
+                  value={formData.objetivo}
+                  onChange={handleChange}
                   placeholder="Ej. Automatizar ventas por WhatsApp + CRM + pagos"
+                  required
                   className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors"
                 />
               </div>
@@ -463,25 +624,39 @@ export default function Home() {
                 <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Contexto del proyecto</label>
                 <textarea
                   rows={4}
+                  name="contexto"
+                  value={formData.contexto}
+                  onChange={handleChange}
                   placeholder="Qué vendes, cómo operas hoy, dónde se rompe el sistema, qué necesitas construir."
+                  required
                   className="w-full bg-black border border-white/5 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-gold-primary/50 transition-colors resize-none"
                 />
               </div>
 
               <div className="pt-4 text-center">
-                <button className="w-full md:w-auto px-10 py-4 bg-gold-primary hover:bg-gold-secondary text-white font-bold rounded-xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 mx-auto">
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full md:w-auto px-10 py-4 bg-gold-primary hover:bg-gold-secondary text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 mx-auto"
+                >
                   Enviar Información
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
-                </button>
+                </motion.button>
               </div>
             </form>
           </div>
-        </section>
+        </motion.section>
 
         {/* Final CTA Section */}
-        <section id="contacto" className="max-w-4xl mx-auto px-6 py-40 border-t border-white/5">
+        <motion.section
+          id="contacto"
+          className="max-w-4xl mx-auto px-6 py-40 border-t border-white/5"
+          {...fadeIn}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <div className="text-center">
             <span className="text-gold-secondary font-bold tracking-widest text-xs mb-6 block uppercase transition-opacity hover:opacity-80">Siguiente Paso</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white max-w-3xl mx-auto leading-tight">
@@ -491,30 +666,35 @@ export default function Home() {
               Solicita un diagnóstico gratuito. Analizaremos tu situación actual y te diremos con honestidad si podemos ayudarte.
             </p>
 
-            <a
+            <motion.a
               href="https://wa.me/525648407249?text=Hola,%20vengo%20de%20la%20página%20web%20y%20quiero%20aplicar%20para%20una%20evaluación."
               target="_blank"
-              className="px-10 py-4 bg-gold-primary hover:bg-gold-secondary text-white font-bold rounded-xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 mx-auto mb-10 w-full md:w-auto"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-10 py-4 bg-gold-primary hover:bg-gold-secondary text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 mx-auto mb-10 w-full md:w-auto"
             >
               Aplicar para evaluación
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </a>
+            </motion.a>
 
             <p className="text-zinc-700 text-[10px] uppercase tracking-wider">
               No vendemos a todos. Evaluamos cada proyecto para asegurar que podemos entregar resultados excepcionales.
             </p>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       {/* WhatsApp Button */}
-      <a
+      <motion.a
         href="https://wa.me/525648407249"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gold-primary rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(122,99,60,0.4)] hover:scale-110 transition-transform group"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gold-primary rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(122,99,60,0.4)] transition-transform group"
       >
         <svg
           className="w-8 h-8 text-white group-hover:scale-110 transition-transform"
@@ -527,7 +707,7 @@ export default function Home() {
         >
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
         </svg>
-      </a>
+      </motion.a>
 
       {/* Footer */}
       <footer className="border-t border-white/5 py-32 bg-background">

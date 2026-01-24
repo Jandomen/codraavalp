@@ -45,3 +45,7 @@ body {
 .gold-glow {
   background: radial-gradient(circle, var(--primary-gold) 0%, transparent 70%);
 }
+
+.gold-glow {
+  background: radial-gradient(circle, var(--primary-gold) 0%, transparent 70%);
+}
