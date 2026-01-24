@@ -20,13 +20,13 @@ export default function Home() {
               height={40}
               className="rounded-lg ring-1 ring-gold-primary/50"
             />
-            <span className="text-xl font-bold tracking-tighter text-white">CODRAVA</span>
+            <span className="text-xl font-bold tracking-tighter text-white">CODRAVA <span className="text-gold-secondary underline decoration-gold-secondary/30 underline-offset-4">LP</span></span>
           </div>
           <div className="hidden md:flex gap-8 text-sm font-medium text-muted hover:text-white transition-colors">
             <a href="#metodologia" className="hover:text-gold-secondary transition-colors">Metodología</a>
             <a href="#capacidades" className="hover:text-gold-secondary transition-colors">Capacidades</a>
             <a
-              href="https://wa.me/525848407249?text=Hola,%20quiero%20solicitar%20un%20diagnóstico%20para%20mi%20negocio."
+              href="https://wa.me/525648407249?text=Hola,%20quiero%20solicitar%20un%20diagnóstico%20para%20mi%20negocio."
               target="_blank"
               className="px-4 py-2 bg-gold-primary text-white rounded-full hover:bg-gold-secondary transition-colors"
             >
@@ -49,19 +49,13 @@ export default function Home() {
           <p className="text-xl text-muted max-w-2xl mx-auto mb-12 leading-relaxed">
             Ayudamos a empresas a eliminar el caos operativo mediante ecosistemas digitales a medida y automatización inteligente de procesos.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-300">
             <a
-              href="https://wa.me/525848407249?text=Hola,%20quiero%20solicitar%20un%20diagnóstico%20para%20mi%20negocio."
+              href="https://wa.me/525648407249?text=Hola,%20quiero%20solicitar%20un%20diagnóstico%20para%20mi%20negocio."
               target="_blank"
               className="px-8 py-4 bg-gold-primary text-white rounded-xl font-semibold hover:bg-gold-secondary transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(122,99,60,0.3)] text-center"
             >
               Solicitar Diagnóstico Gratuito
-            </a>
-            <a
-              href="#metodologia"
-              className="px-8 py-4 bg-white/5 text-white border border-white/10 rounded-xl font-semibold hover:bg-white/10 transition-all text-center"
-            >
-              Ver nuestra metodología
             </a>
           </div>
         </section>
@@ -301,6 +295,7 @@ export default function Home() {
         {/* Methodology */}
         <section id="metodologia" className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5">
           <div className="text-center mb-16">
+            <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase transition-opacity hover:opacity-80">Proceso</span>
             <h2 className="text-4xl font-bold mb-4">Metodología de trabajo</h2>
             <p className="text-muted">7 pasos diseñados para la excelencia operativa.</p>
           </div>
@@ -398,6 +393,93 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Final CTA / Application Section - RESTORED */}
+        <section id="aplicar" className="max-w-4xl mx-auto px-6 py-32 border-t border-white/5">
+          <div className="text-center mb-16">
+            <span className="text-gold-secondary font-bold tracking-widest text-xs mb-4 block uppercase">FINAL</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">Aplicar para trabajar con CODRAVA LP</h2>
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <p className="text-zinc-500 text-sm leading-relaxed">
+                Si tu negocio necesita un sistema serio, automatizado y escalable, este es el siguiente paso.
+                La aplicación nos permite evaluar si tu proyecto califica y si somos el equipo correcto para ejecutarlo.
+              </p>
+              <p className="text-gold-secondary/80 text-xs font-bold uppercase tracking-tight">
+                Importante: No prometemos resultados irreales. Diseñamos sistemas para medir, optimizar y escalar.
+              </p>
+            </div>
+          </div>
+
+          <div className="p-8 md:p-12 rounded-3xl border border-white/[0.03] bg-[#080808]">
+            <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Nombre</label>
+                  <input
+                    type="text"
+                    placeholder="Tu nombre"
+                    className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Empresa</label>
+                  <input
+                    type="text"
+                    placeholder="Nombre del negocio"
+                    className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Correo</label>
+                  <input
+                    type="email"
+                    placeholder="tu@correo.com"
+                    className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Presupuesto estimado</label>
+                  <select className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors appearance-none">
+                    <option>Selecciona una opción</option>
+                    <option>$1k - $3k USD</option>
+                    <option>$3k - $10k USD</option>
+                    <option>$10k+ USD</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Objetivo principal (1-2 lineas)</label>
+                <input
+                  type="text"
+                  placeholder="Ej. Automatizar ventas por WhatsApp + CRM + pagos"
+                  className="w-full bg-black border border-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-primary/50 transition-colors"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider ml-1">Contexto del proyecto</label>
+                <textarea
+                  rows={4}
+                  placeholder="Qué vendes, cómo operas hoy, dónde se rompe el sistema, qué necesitas construir."
+                  className="w-full bg-black border border-white/5 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-gold-primary/50 transition-colors resize-none"
+                />
+              </div>
+
+              <div className="pt-4 text-center">
+                <button className="w-full md:w-auto px-10 py-4 bg-gold-primary hover:bg-gold-secondary text-white font-bold rounded-xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 mx-auto">
+                  Enviar Información
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
         {/* Final CTA Section */}
         <section id="contacto" className="max-w-4xl mx-auto px-6 py-40 border-t border-white/5">
           <div className="text-center">
@@ -410,7 +492,7 @@ export default function Home() {
             </p>
 
             <a
-              href="https://wa.me/525848407249?text=Hola,%20vengo%20de%20la%20página%20web%20y%20quiero%20aplicar%20para%20una%20evaluación."
+              href="https://wa.me/525648407249?text=Hola,%20vengo%20de%20la%20página%20web%20y%20quiero%20aplicar%20para%20una%20evaluación."
               target="_blank"
               className="px-10 py-4 bg-gold-primary hover:bg-gold-secondary text-white font-bold rounded-xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 mx-auto mb-10 w-full md:w-auto"
             >
@@ -429,7 +511,7 @@ export default function Home() {
 
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/525848407249"
+        href="https://wa.me/525648407249"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gold-primary rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(122,99,60,0.4)] hover:scale-110 transition-transform group"
@@ -483,7 +565,7 @@ export default function Home() {
                 <svg className="w-4 h-4 text-gold-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                +52 58 4840 7249
+                +52 56 4840 7249
               </li>
               <li className="flex items-center gap-3 text-zinc-500 text-sm">
                 <svg className="w-4 h-4 text-gold-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -503,7 +585,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-zinc-600 uppercase tracking-widest">
-          <div>© 2026 CODRAVA LP. Todos los derechos reservados.</div>
+          <div>© 2026 CODRAVA <span className="text-gold-secondary">LP</span>. Todos los derechos reservados.</div>
           <div className="flex gap-6">
             <span>Tecnología</span>
             <span>·</span>
