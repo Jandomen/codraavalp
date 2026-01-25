@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const fadeIn: Variants = {
   initial: { opacity: 0, y: 20 },
-  whileInView: {
+  animate: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.8, ease: "easeOut" }
@@ -29,7 +29,6 @@ const staggerItem: Variants = {
 };
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({
     nombre: "",
     empresa: "",
@@ -38,11 +37,6 @@ export default function Home() {
     objetivo: "",
     contexto: ""
   });
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -65,35 +59,10 @@ export default function Home() {
 
   return (
     <>
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] bg-black flex items-center justify-center"
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="relative w-24 h-24"
-            >
-              <Image
-                src="/logo.jpg"
-                alt="Logo"
-                fill
-                className="rounded-2xl grayscale brightness-125"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <div className="relative min-h-screen selection:bg-gold-primary/30 bg-black">
         {/* Visual Enhancements Overlay */}
         <div className="vignette-overlay" />
-        <div className="cyan-glow-fixed" />
+        <div className="gold-glow-fixed" />
         <div className="fixed inset-0 grid-bg opacity-20 pointer-events-none" />
 
         {/* Background Glows */}
@@ -133,21 +102,57 @@ export default function Home() {
           {/* Hero Section */}
           <motion.section
             className="max-w-4xl mx-auto px-6 text-center mb-32"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            initial="initial"
+            animate="animate"
+            variants={{
+              initial: { opacity: 0 },
+              animate: {
+                opacity: 1,
+                transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+              }
+            }}
           >
-            <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-gold-primary/30 bg-gold-primary/5 text-gold-secondary text-sm font-medium">
+            <motion.div
+              variants={{
+                initial: { scale: 0.8, opacity: 0, y: 30 },
+                animate: { scale: 1, opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="relative w-28 h-28 mx-auto mb-10 shadow-[0_0_50px_rgba(122,99,60,0.3)] rounded-3xl overflow-hidden ring-1 ring-gold-primary/20"
+            >
+              <Image
+                src="/logo.jpg"
+                alt="Logo"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+            <motion.div
+              variants={fadeIn}
+              className="inline-block mb-6 px-4 py-1.5 rounded-full border border-gold-primary/30 bg-gold-primary/5 text-gold-secondary text-sm font-medium"
+            >
               Agencia Tecnológica Premium
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1] text-white">
+            </motion.div>
+
+            <motion.h1
+              variants={fadeIn}
+              className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1] text-white"
+            >
               No vendemos servicios. <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-b from-gold-secondary to-gold-primary">Construimos sistemas</span> que escalan negocios.
-            </h1>
-            <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+            </motion.h1>
+
+            <motion.p
+              variants={fadeIn}
+              className="text-xl text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
+            >
               Ayudamos a empresas a eliminar el caos operativo mediante ecosistemas digitales a medida y automatización inteligente de procesos.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            </motion.p>
+
+            <motion.div
+              variants={fadeIn}
+              className="flex flex-col sm:flex-row justify-center gap-4"
+            >
               <a
                 href="https://wa.me/525648407249?text=Hola,%20quiero%20solicitar%20un%20diagnóstico%20para%20mi%20negocio."
                 target="_blank"
@@ -155,7 +160,7 @@ export default function Home() {
               >
                 Solicitar Diagnóstico Gratuito
               </a>
-            </div>
+            </motion.div>
           </motion.section>
 
           {/* Symptoms Section */}
@@ -812,7 +817,7 @@ export default function Home() {
             </div>
           </div>
         </footer>
-      </div>
+      </div >
     </>
   );
 }
